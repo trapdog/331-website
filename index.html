@@ -1,0 +1,198 @@
+@@ -0,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Project 1</title>
+	<link href="project.css" rel="stylesheet">
+	<script type="text/javascript">
+		var interval = null; // keeps track of the interval
+		var speed = 6; // determines the speed of the animation
+		var count = 0; // size of the image during the animation
+		//checks to see if a user has already entered a name
+		//creates CMLHttpRequest object and names it request
+		var request = new XMLHttpRequest();
+		//retrieves joke from txt file
+		function retrieveJoke(url) {
+			if (request) {
+				request.addEventListener("readystatechange",  stateChange, false);
+				request.open('GET', url, true);
+				request.send(null);
+			}
+		}
+		//puts joke punchline in correct spot
+		function stateChange() {
+			if (request.readyState == 4 && request.status == 200) {
+				document.getElementById("answer").innerHTML = request.responseText;
+			}
+		}
+		function run() {
+			count += speed;
+
+			// stop the animation when the image is large enough
+			if ( count >= 375 )
+			{
+				window.clearInterval( interval );
+				interval = null;
+			}
+
+			var bigImage = document.getElementById( "image" );
+			bigImage.setAttribute( "style", "width: " + (0.7656 * count + "px;") +
+					"height: " + (count + "px;") );
+		}
+
+		// inserts the proper image into the main image area and
+		// begins the animation
+		function display( imgfile ) {
+			if ( interval )
+				return;
+
+			var bigImage = document.getElementById( "image" );
+			bigImage.setAttribute( "style", "width: 0px; height: 0px;" );
+			bigImage.setAttribute( "alt", "Large version of " + imgfile );
+			count = 0; // start the image at size 0
+			interval = window.setInterval( "run()", 10 ); // animate
+		}
+		if (!localStorage.getItem("user")) {
+			var name = prompt("Please enter your name");
+			localStorage.setItem("user",name);
+			alert("Welcome to the website, " + localStorage.getItem("user"));
+		}
+		//creates welcome message with user's name
+		var greet = "Welcome to the website, " + localStorage.getItem("user");
+		var y = document.getElementById("greeting");
+		//y.innerHTML = greet;
+
+		//removes the saved name from the local storage
+		function removeName() {
+			localStorage.removeItem("user");
+		}
+		//image variable
+		var iconImg;
+		//array of possible pictures
+		var pictures = ["tetris", "gta", "sports", "pubg"];
+		//array of alt descriptions of pictures
+		var descriptions = ["Tetris", "Grand Theft Auto 5", "Wii Sports", "Player Unknown's Battleground"];
+		// pick a random image and corresponding description then modify
+		// the img element in the document's body
+		function pickImage() {
+			var index = Math.floor( Math.random() * 4 );
+			iconImg.setAttribute( "src", pictures[index] + ".jpg");
+			iconImg.setAttribute( "alt", descriptions[index]);
+			display( pictures[index] );
+		}
+		//this function allows the user to change the color of the text
+		function changeColor() {;
+			var para = document.getElementById("para1");
+			para.setAttribute("class","blue");
+		}
+		//this function removes the heading from the homepage
+		function removeHeading() {
+			var currentNode = document.getElementById("removable");
+			if (currentNode.parentNode == document.body) {
+				alert("You can't remove a top-level element.");
+			}
+			else {
+				currentNode.parentNode.removeChild(currentNode);
+			}
+		}
+		//shows the last modified time to user when button is clicked
+		function modifiedTime() {
+			var x = new Date(document.lastModified);
+			document.getElementById("modified").innerHTML = x;
+		}
+		//calls the modifiedTime function, removeName function, and the pickImage() function and
+		//assigns the locations on the webpage for each
+		function start() {
+			var website = document.getElementById("website");
+			website.addEventListener("click",web,false);
+			iconImg = document.getElementById( "image");
+			iconImg.addEventListener( "click", pickImage, false);
+			var remove = document.getElementById("remove");
+			remove.addEventListener("click",removeName,false);
+			document.getElementById("removeheading").addEventListener("click",removeHeading,false);
+			document.getElementById("fetch").addEventListener("click",function(){retrieveJoke("joke.txt");},false);
+		}
+		//creates a pop-up window of a popular gaming website, called from start()
+		function web() {
+			window.open("https://www.ign.com/","ign","height=500px,width=500px");
+		}
+		//occurs when the user mouses over the heading
+		function mOver(e) {
+			if (e.target.getAttribute("id") == "removable") {
+				e.target.setAttribute("style","background-color:red");
+			}
+		}
+		//occurs when the user moves the mouse away from the heading
+		function mOut(e) {
+			if (e.target.getAttribute("id") == "removable") {
+				e.target.setAttribute("style","background-color:#5B5B5B");
+			}
+		}
+		//these get called when the user mouses over a certain element
+		document.addEventListener("mouseover",mOver,false);
+		document.addEventListener("mouseout",mOut,false);
+		//gets called when page starts up and calls the start() method
+		window.addEventListener("load",start,false);
+	</script>
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+<div class="container">
+	<div class="row">
+		<div class="col-md-12 offset-0">
+			<div id="banner">
+				<img alt="banner" src="games.jpg" class="img-responsive img-fluid">
+			</div>
+		</div>
+	</div>
+
+	<p class="row">
+	</p><div class="col-md-2 offset-0">
+	<div id="nav">
+		<ul>
+			<li><a href="index.html">Home</a></li>
+			<li><a href="rate.html">Highest Rated</a></li>
+			<li><a href="topselling.html">Top Selling Games</a></li>
+			<li><a href="favorite.html">Your Favorite</a></li>
+			<li><a href="references.html">References</a></li>
+			<li><a href="aboutus.html">About Us</a></li>
+		</ul>
+	</div>
+</div>
+	<form>
+		<input type="button" name="website" id="website" value="Popular Gaming Website">
+		<input type="button" name="remove" id="remove" value="Reset Entered Name">
+		<input type="button" name="removeheading" id="removeheading" value="Remove Heading">
+
+	</form>
+	<div class="col-md-10">
+		<div id="content">
+			<h3 id="greeting"></h3>
+			<h3 id="removable">Welcome to the Website!</h3>
+			<p>The Video Game industry is currently larger than it has ever been, making an estimated $135 billion in 2018 alone and there
+				is a estimated growth of about 10% to that number every year. Gaming has been a big part of my life since I was about 5 years old.
+				This website's purpose is to mainly to show an appreciation for the industry and also give information about the most popular
+				and highest selling games out there currently. There is also a form that allows the user to input their favorite and and
+				tell us why its their favorite.</p>
+			<img id = "image" src = "minecraft.png" alt = "minecraft">
+			<p>Please enjoy browsing the site and viewing the many features that have been implemented. Here's a little gamer joke
+				for you fellow gamers to laugh at.</p>
+			<h3>You know when you walk into a room and forget why you went in there?</h3>
+			<label>
+				<input type="button" name="fetch" id="fetch" value="Fetch Answer" /><br>
+			</label>
+			<h3 id="answer"></h3>
+			<button onclick="modifiedTime()">Last Modified</button>
+			<p id="modified"></p>
+		</div>
+	</div>
+	<div class="row">
+		<div class="col-md-12 offset-0">
+			<div id="footer">
+				<p><a href="project.css">CSS Style Sheet</a></p><h5>this website is developed as an educational project</h5>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

@@ -1,0 +1,42 @@
+<?xml version="1.0"?>
+<games>
+    <game>
+        <title>Minecraft</title>
+        <sales>176,000,000</sales>
+        <platform>Multi-Platform</platform>
+        <release>November 18, 2011</release>
+        <logo>minecraft.png</logo>
+    </game>
+
+    <game>
+        <title>Tetris</title>
+        <sales>170,000,000</sales>
+        <platform>Multi-Platform</platform>
+        <release>June 6, 1984</release>
+        <logo>tetris.jpg</logo>
+    </game>
+
+    <game>
+        <title>Grand Theft Auto V</title>
+        <sales>110,000,000</sales>
+        <platform>Multi-Platform</platform>
+        <release>September 17, 2013</release>
+        <logo>gta.jpg</logo>
+    </game>
+
+    <game>
+        <title>Wii Sports</title>
+        <sales>82,870,000</sales>
+        <platform>Wii</platform>
+        <release>November 19, 2006</release>
+        <logo>sports.jpg</logo>
+    </game>
+
+    <game>
+        <title>PlayerUnknown's Battlegrounds</title>
+        <sales>50,000,000</sales>
+        <platform>Multi-Platform</platform>
+        <release>December 20, 2017</release>
+        <logo>pubg.jpg</logo>
+    </game>
+</games>

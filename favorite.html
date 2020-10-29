@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>Project 1</title>
+	  <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
+	  <link rel="stylesheet" href="/resources/demos/style.css">
+	<link href="project.css" rel="stylesheet">
+	<script type="text/javascript">
+		function changeColor() {
+			var para = document.getElementById("chooseColor");
+			para.setAttribute("class","black");
+		}
+		function start() {
+			var colors = document.getElementById("color");
+			colors.addEventListener("click",changeColor,false);
+		}
+		window.addEventListener("load",start,false);
+	</script>
+  </head>
+  <body>
+<div class="container">
+<div class="row">
+<div class="col-md-12 offset-0"> 
+   <div id="banner">
+   	  <img alt="banner" src="games.jpg" class="img-responsive img-fluid">
+   </div>
+</div>
+</div>   
+
+<p class="row">
+</p><div class="col-md-2 offset-0"> 
+   <div id="nav">
+	  <ul>
+		  <li><a href="index.html">Home</a></li>
+		  <li><a href="rate.html">Highest Rated</a></li>
+		  <li><a href="topselling.html">Top Selling Games</a></li>
+		  <li><a href="favorite.html">Your Favorite</a></li>
+		  <li><a href="references.html">References</a></li>
+		  <li><a href="aboutus.html">About Us</a></li>
+	  </ul>
+   </div>
+</div>
+<form>
+	<input type="button" name="color" id="color" value="Change Form Color">
+</form>
+<div class="col-md-10">    
+   <div id="content">
+	  
+      <form>
+	  <fieldset id="chooseColor">
+	  <legend><h3>Whats your Favorite Game?</h3></legend>
+	<p>Name: <input type="text" name="First" data-validation="length alphanumeric" data-validation-length="1-20"/><br /></p>
+	<p>Email Address: <input type="email" name="email" id="email" data-validation="required"/><br /></p>
+	<p>Game Genre: <input list="genres" name="genre" placeholder="Select a Genre" data-validation="required"></p>
+	<datalist id="genres">
+	<option value="Shooter">
+	<option value="RPG">
+	<option value="Strategy">
+	<option value="Adventure">
+	<option value="Puzzle">
+	<option value="MMO">
+	</datalist>
+	<p>Title of Game: <input type="text" name="game" data-validation="required"/><br /></p>
+	<p>Why is this your Favorite Game? <br /><textarea name="comment" cols="45" rows="6" id="comment" data-validation="required"></textarea>
+		<span id="maxlength">100</span> characters left</p>
+	<p>Do you think this game is better than the current top seller? <br /></p>
+	<p><input type="radio" name="list" value="Yes" > Yes<br /></p>
+	<p><input type="radio" name="list" value="No" > No<br /></p>
+	<p><input type="radio" name="list" value="Don't Care" > Not Sure<br /></p>
+		  <p>Today's Date: <input type="text" id="datepicker"></p>
+	<br />
+
+	<input type="submit" value="Submit" />  <input type="reset" value="Clear" />
+</fieldset>
+</form>
+	   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+	   <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+	   <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+	   <script>
+		   //date picker function
+		   $( function() {
+			   $( "#datepicker" ).datepicker();
+		   } );
+	   </script>
+	   <script>
+		   //comment character counter
+		   $.validate({
+			   lang: 'en'
+		   });
+		   $('#comment').restrictLength($('#maxlength'));
+	   </script>
+   </div>
+</div>
+<p></p>
+
+<div class="row">
+<div class="col-md-12 offset-0"> 
+   <div id="footer">
+   	  <p><a href="project.css">CSS Style Sheet</a></p><h5>this website is developed as an educational project</h5>
+   </div>
+</div>
+</div>  
+</div>
+  </body>
+</html>

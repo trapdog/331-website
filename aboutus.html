@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Project 1</title>
+    <link href="project.css" rel="stylesheet">
+    <script type="text/javascript">
+
+    </script>
+</head>
+<body>
+<div class="container">
+    <div class="row">
+        <div class="col-md-12 offset-0">
+            <div id="banner">
+                <img alt="banner" src="games.jpg" class="img-responsive img-fluid">
+            </div>
+        </div>
+    </div>
+
+    <p class="row">
+    </p><div class="col-md-2 offset-0">
+    <div id="nav">
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="rate.html">Highest Rated</a></li>
+            <li><a href="topselling.html">Top Selling Games</a></li>
+            <li><a href="favorite.html">Your Favorite</a></li>
+            <li><a href="references.html">References</a></li>
+            <li><a href="aboutus.html">About Us</a></li>
+        </ul>
+    </div>
+</div>
+
+    <div class="col-md-10">
+        <div id="content">
+            <h3>About Us</h3>
+            <p>I am Rafiul Huq, a senior at George Mason University with a major in Information technology and a concentration
+            in Database Technology and Programming. I've been an avid gamer all my life, getting my first console when I was
+            4 years old. It was a PlayStaion One and I've stuck with the Sony consoles ever since. I like to stay on top
+            of whats going on in the gaming world and thought a website would help me share that knowledge with others easily
+            and more efficiently.</p><br>
+            <p>Some of my favorite games of all time are:</p>
+            <ul>
+                <li><p>Dark Souls Series</p></li>
+                <li><p>Bloodborne</p></li>
+                <li><p>Kingdom Hearts Series</p></li>
+                <li><p>Uncharted Series</p></li>
+                <li><p>Persona 4</p></li>
+            </ul>
+            <p>Once again, please enjoy browsing the site and learning some details about the gaming world!</p>
+            <div id="clickme">
+                <h3>Click here to see the game logo disappear and again to reappear!</h3>
+            </div>
+            <img id="game" src="gta.jpg" alt="GTA logo" width="100" height="123"
+                 style="position: relative; left: 10px;">
+        </div>
+    </div>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
+    <script src="//cdnjs.cloudflare.com/ajax/libs/jquery-form-validator/2.3.26/jquery.form-validator.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script>
+        //animates the image on the page
+        $( "#clickme" ).click(function() {
+            $( "#game" ).animate({
+                opacity: 0.25,
+                left: "+=50",
+                height: "toggle"
+            }, 5000, function() {
+                // Animation complete.
+            });
+        });
+    </script>
+    <p></p>
+
+    <div class="row">
+        <div class="col-md-12 offset-0">
+            <div id="footer">
+                <p><a href="project.css">CSS Style Sheet</a></p><h5>this website is developed as an educational project</h5>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>
